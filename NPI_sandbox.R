@@ -1,6 +1,7 @@
 library(tidyverse)
 
-sel_subset <- "Axe, Beaufort, Beckom, Cutlass, Gregory, Kittyhawk, Lancer, Mace, Manning, Scepter, Trojan, Suntop, Commander, Compass, Fathom, Planet, Spartacus, Urambie"
+sel_subset <- "Axe, Beaufort, Beckom, Cutlass, Gregory, Kittyhawk, Lancer, Mace, Manning, Scepter,
+Trojan, Suntop, Commander, Compass, Fathom, Planet, Spartacus, Urambie, EGA_Gregory, RGT Planet, Spartacus CL"
 sel_subset <- str_split(sel_subset,",")
 sel_subset <-  unlist(sel_subset)
 sel_subset <- str_trim(sel_subset)
@@ -34,10 +35,10 @@ yanyean <- yanyean %>%
 write_csv(yanyean, file.path("2019_npi_yanyean.csv"))
 
 
-NPIsandbox <- read_csv("Merridin2019_Design.csv")
+NPIsandbox <- read_csv("WaggaWagga2019_Design.csv")
 NPIsandbox <- NPIsandbox %>% 
   select(-(X1)) %>% 
-  mutate(subset=if_else(NPIsandbox$Variety %in% sel_subset & NPIsandbox$TOS %in% tos_subset, "subset\\u0007", NA_character_))
-write_csv(NPIsandbox, file.path("NPIsandbox.csv"), is.na = FALSE)
+  mutate(subset=if_else(NPIsandbox$Variety %in% sel_subset & NPIsandbox$TOS %in% tos_subset, "subset\\u0007", ""))
+write_csv(NPIsandbox, file.path("NPIsandbox.csv"))
 
 
