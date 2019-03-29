@@ -1,5 +1,5 @@
 ## Add tidyverse
-(tidyverse)
+library(tidyverse)
 
 # Create the subset of lines and TOS that are to have extra data taken
 sel_subset <- "Axe, Beaufort, Beckom, Cutlass, Gregory, Kittyhawk, Lancer, Mace, Manning, Scepter,
@@ -13,9 +13,8 @@ tos_subset <- c('1','4','8')
 
 
  #Wagga
-wagga <- read_csv("raw_data/WaggaWagga2019_Design.csv") 
+wagga <- read_csv("raw_data/WaggaWagga2019_Design - updated 05032019 for TOS1 sowing error.csv") 
 wagga <- wagga %>%
-  select(-(X1)) %>% 
   mutate(subset=if_else((wagga$Variety %in% sel_subset & wagga$TOS %in% tos_subset), "subset\\u0007", ""))
 write_csv(wagga, file.path("fp_files/2019_npi_waggawagga.csv"))
 
