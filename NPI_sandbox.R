@@ -11,6 +11,7 @@ sel_subset
 
 tos_subset <- c('1','4','8')
 
+tos_subset_cal <- c('1','2','4','8') #Callingon requested TOS2 added due to animal damage in TOS1
 
  #Wagga
 wagga <- read_csv("raw_data/WaggaWagga2019_Design - updated 05032019 for TOS1 sowing error.csv") 
@@ -22,7 +23,7 @@ write_csv(wagga, file.path("fp_files/2019_npi_waggawagga.csv"))
 callington <- read_csv("raw_data/Callington2019_Design.csv")
 callington <- callington %>% 
   select(-(X1)) %>% 
-  mutate(subset=if_else(callington$Variety %in% sel_subset & callington$TOS %in% tos_subset, "subset\\u0007", ""))
+  mutate(subset=if_else(callington$Variety %in% sel_subset & callington$TOS %in% tos_subset_cal, "subset\\u0007", ""))
 write_csv(callington, file.path("fp_files/2019_npi_callington.csv"))
 
 #Merridin
